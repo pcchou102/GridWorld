@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1>🎯 Grid World - 強化學習</h1>
+            <p class="subtitle">深度強化學習 HW1 — 網格地圖 · 策略評估 · 價值迭代</p>
+        </header>
+
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <div class="control-section">
+                <h3>📐 網格設定</h3>
+                <div class="control-row">
+                    <label for="grid-size">網格大小 (n×n):</label>
+                    <div class="slider-group">
+                        <input type="range" id="grid-size" min="5" max="9" value="5" class="slider">
+                        <span id="grid-size-label" class="slider-value">5</span>
+                    </div>
+                </div>
+                <div class="control-row">
+                    <label>放置模式:</label>
+                    <div class="mode-buttons">
+                        <button id="mode-start" class="mode-btn active" data-mode="start">
+                            <span class="dot green-dot"></span> 起點
+                        </button>
+                        <button id="mode-end" class="mode-btn" data-mode="end">
+                            <span class="dot red-dot"></span> 終點
+                        </button>
+                        <button id="mode-obstacle" class="mode-btn" data-mode="obstacle">
+                            <span class="dot grey-dot"></span> 障礙物 (<span id="obstacle-count">0</span>/<span id="obstacle-max">3</span>)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <h3>⚙️ 演算法控制</h3>
+                <div class="action-buttons">
+                    <button id="btn-random-policy" class="action-btn btn-primary" disabled>
+                        🎲 隨機策略
+                    </button>
+                    <button id="btn-policy-eval" class="action-btn btn-secondary" disabled>
+                        📊 策略評估
+                    </button>
+                    <button id="btn-value-iteration" class="action-btn btn-accent" disabled>
+                        🚀 價值迭代
+                    </button>
+                    <button id="btn-reset" class="action-btn btn-danger">
+                        🔄 重置
+                    </button>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <h3>📋 參數資訊</h3>
+                <div class="param-info">
+                    <span class="param">γ = 0.9</span>
+                    <span class="param">R<sub>step</sub> = -1</span>
+                    <span class="param">R<sub>goal</sub> = 0</span>
+                    <span id="iteration-info" class="param iteration-info" style="display:none;">迭代次數: <span id="iter-count">0</span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Bar -->
+        <div id="status-bar" class="status-bar">
+            <span id="status-icon">💡</span>
+            <span id="status-text">請先點擊網格設定起點（綠色）</span>
+        </div>
+
+        <!-- Grid Container -->
+        <div class="grid-wrapper">
+            <div id="grid-container" class="grid-container"></div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-item"><span class="legend-color" style="background:#22c55e;"></span> 起點 (Start)</div>
+            <div class="legend-item"><span class="legend-color" style="background:#ef4444;"></span> 終點 (Goal)</div>
+            <div class="legend-item"><span class="legend-color" style="background:#64748b;"></span> 障礙物 (Obstacle)</div>
+            <div class="legend-item"><span class="legend-color" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);"></span> 策略箭頭 (Policy)</div>
+        </div>
+    </div>
+
+    <script src="static/js/app.js"></script>
+</body>
+</html>
