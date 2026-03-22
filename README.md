@@ -4,7 +4,7 @@
 
 這是一個基於網格地圖的強化學習 (Reinforcement Learning) 互動式展示專案。此專案展示了從隨機策略、策略評估 (Policy Evaluation)，到價值迭代 (Value Iteration) 尋找最佳路徑的視覺化過程。
 
-> **🔗 [Demo](https://pcchou102.github.io/GridWorld/)**
+> **🔗 [Demo-https://pcchou102.github.io/GridWorld/](https://pcchou102.github.io/GridWorld/)**
 
 ---
 
